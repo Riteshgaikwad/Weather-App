@@ -1,3 +1,25 @@
+
+const userTab=document.querySelector("[data-userWeather]");
+const searchTab=document.querySelector("[data-searchWeather]");
+const userContainer=document.querySelector(".weather-container");
+const grantAccessContainer=document.querySelector(".grant-locaton-container");
+const searchForm=document.querySelector("[data-searchForm]");
+const loadingScreen=document.querySelector(".loading-container");
+const userInfoContainer=document.querySelector(".user-info-container");
+
+//initially variable need??
+
+let currentTab=userTab;
+
+currentTab.classList.add("current-tab");
+
+
+
+
+
+
+
+
 const API_KEY = "168771779c71f3d64106d8a88376808a";
 
 function renderWeatherInfo(data) {
@@ -37,4 +59,20 @@ async function getCustomWeatherDetails() {
   } catch (err) {
     console.log(err);
   }
+}
+
+function getLocation(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }else{
+    console.log("No geolocation Supported");
+  }
+}
+
+function showPosition(position){
+  let lat=position.coords.latitude;
+  let longi=position.coords.longitude;
+
+  console.log(lat);
+  console.log(longi);
 }
